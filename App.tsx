@@ -3,8 +3,8 @@ import { Text } from 'react-native';
 import { useFonts } from '@use-expo/font';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import { Theme } from './src/theme';
-import { Drinks, Filters } from './src/screens';
+import { Theme } from 'theme';
+import { Drinks, Filters } from 'screens';
 
 const Stack = createStackNavigator();
 
