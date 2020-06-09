@@ -15,6 +15,7 @@ export const lightTheme: DefaultTheme = {
       primary: '#000000',
       secondary: '#7E7E7E',
     },
+    skeleton: '#EBEBEB',
   },
   fontSize: {
     heading: {

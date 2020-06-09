@@ -11,6 +11,7 @@ declare module 'styled-components' {
         primary: string;
         secondary: string;
       };
+      skeleton: string;
     };
     fontFamily: {
       regular: string;

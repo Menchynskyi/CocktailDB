@@ -15,8 +15,3 @@ export const DrinkName = styled.Text`
   font-family: ${({ theme }) => theme.fontFamily.regular};
   font-size: ${({ theme }) => theme.fontSize.text.regular};
 `;
-
-export const DrinkImage = styled.Image`
-  width: 100px;
-  height: 100px;
-`;
