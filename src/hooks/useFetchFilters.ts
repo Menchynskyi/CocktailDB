@@ -7,7 +7,9 @@ export const useFetchFilters = () => {
   const { filterList, error } = useDrinksState();
 
   useEffect(() => {
-    fetchFilters(dispatch);
+    if (filterList.length === 0) {
+      fetchFilters(dispatch);
+    }
   }, []);
 
   return {

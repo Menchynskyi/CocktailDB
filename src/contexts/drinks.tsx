@@ -14,6 +14,10 @@ export type Action =
     }
   | {
       type: 'errorFetching';
+    }
+  | {
+      type: 'setFilters';
+      payload: Filter[];
     };
 
 export type DrinksContextState = {
@@ -42,6 +46,12 @@ const drinksReducer = (state: State, action: Action) => {
       return {
         ...state,
         error: true,
+      };
+    }
+    case 'setFilters': {
+      return {
+        ...state,
+        filterList: action.payload,
       };
     }
     default: {
