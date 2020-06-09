@@ -1,7 +1,12 @@
 import React from 'react';
-import { Text, SafeAreaView } from 'react-native';
+import { Text } from 'react-native';
 import { useFonts } from '@use-expo/font';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
 import { Theme } from './src/theme';
+import { Drinks, Filters } from './src/screens';
+
+const Stack = createStackNavigator();
 
 const App: React.FC = () => {
   const [fontIsLoaded] = useFonts({
@@ -16,9 +21,12 @@ const App: React.FC = () => {
 
   return (
     <Theme>
-      <SafeAreaView>
-        <Text>CoctailDB</Text>
-      </SafeAreaView>
+      <NavigationContainer>
+        <Stack.Navigator>
+          <Stack.Screen name="Drinks" component={Drinks} />
+          <Stack.Screen name="Filters" component={Filters} />
+        </Stack.Navigator>
+      </NavigationContainer>
     </Theme>
   );
 };
