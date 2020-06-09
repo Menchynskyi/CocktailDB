@@ -1,7 +1,7 @@
 import React from 'react';
 import { Text, SectionList } from 'react-native';
 import { useFetchDrinks } from 'hooks/useFetchDrinks';
-import { DrinkListItem } from 'components';
+import { DrinkListItem, Loader } from 'components';
 import { getDrinks } from 'api';
 import { useDrinksDispatch } from 'contexts';
 import { DrinksContainer, SectionTitle } from './DrinksStyled';
@@ -10,7 +10,7 @@ export const Drinks: React.FC = () => {
   const { filterList, drinkList, loading, error } = useFetchDrinks();
   const dispatch = useDrinksDispatch();
 
-  if (loading) return <Text>Loading...</Text>;
+  if (loading) return <Loader />;
   if (error) return <Text>Error</Text>;
 
   const handleEndReached = () => {
