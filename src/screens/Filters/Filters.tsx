@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import { useFetchFilters } from 'hooks';
-import { Text } from 'react-native';
 import { FlatList } from 'react-native-gesture-handler';
-import { FilterListItem, Loader } from 'components';
+import { FilterListItem, Loader, ErrorMessage } from 'components';
 import { useDrinksDispatch } from 'contexts';
 import { useNavigation } from '@react-navigation/native';
 import { FilterContainer, ApplyButton, ApplyTitle } from './FilterStyled';
@@ -14,15 +13,17 @@ export const Filters: React.FC = () => {
   const dispatch = useDrinksDispatch();
   const navigation = useNavigation();
 
+  if (error) return <ErrorMessage />;
   if (loading) return <Loader />;
-  if (error) return <Text>Error</Text>;
 
   const handleToggleSelected = (filterName: string) => {
     setCurrentFilters(prev => {
       const filterId = prev.findIndex(({ name }) => filterName === name);
+      const isLast =
+        currentFilters.filter(({ isSelected }) => isSelected).length === 1;
       return prev.map((filter, id) => {
         if (id === filterId) {
-          return { ...filter, isSelected: !filter.isSelected };
+          return { ...filter, isSelected: isLast ? true : !filter.isSelected };
         }
         return filter;
       });

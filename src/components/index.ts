@@ -6,3 +6,4 @@ export { FilterListItem } from './FilterListItem';
 export { DrinkListItem } from './DrinkListItem';
 export { DrinkImage } from './DrinkImage';
 export { Loader } from './Loader';
+export { ErrorMessage } from './ErrorMessage';

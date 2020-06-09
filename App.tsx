@@ -1,11 +1,10 @@
 import React from 'react';
-import { Text, SafeAreaView } from 'react-native';
 import { useFonts } from '@use-expo/font';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { Theme } from 'theme';
 import { Drinks, Filters } from 'screens';
-import { Header } from 'components';
+import { Header, Loader } from 'components';
 import { DrinksProvider } from 'contexts';
 
 const Stack = createStackNavigator();
@@ -18,7 +17,7 @@ const App: React.FC = () => {
   });
 
   if (!fontIsLoaded) {
-    return <Text>Loading...</Text>;
+    return <Loader />;
   }
 
   return (
