@@ -1,13 +1,6 @@
 import axios from 'axios';
 import { Action } from 'contexts';
-import {
-  Filter,
-  FilterApi,
-  DrinkApi,
-  Drink,
-  DrinkList,
-  DrinkData,
-} from 'types';
+import { Filter, FilterApi, DrinkApi, Drink } from 'types';
 
 const apiUrl = 'https://www.thecocktaildb.com/api/json/v1/1';
 
@@ -50,7 +43,9 @@ export const fetchDrinks = async (
 ) => {
   try {
     const data = await Promise.all(
-      filterList.map(({ name }) => getDrinksByType(name))
+      filterList
+        .filter(({ isSelected }) => isSelected)
+        .map(({ name }) => getDrinksByType(name))
     );
     dispatch({ type: 'fetchDrinks', payload: data });
   } catch (e) {

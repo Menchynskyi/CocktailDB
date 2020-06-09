@@ -12,7 +12,7 @@ export const useFetchDrinks = () => {
     if (!loading) {
       fetchDrinks(dispatch, filterList);
     }
-  }, [loading]);
+  }, [filterList]);
 
   return {
     drinkList,
