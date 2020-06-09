@@ -1,8 +1,8 @@
 import React, { createContext, useReducer, useContext } from 'react';
-import { Drink, Filter } from 'types';
+import { Filter, DrinkList, DrinkData } from 'types';
 
 type State = {
-  drinkList: Drink[];
+  drinkList: DrinkList;
   filterList: Filter[];
   error: boolean;
 };
@@ -18,7 +18,8 @@ export type Action =
   | {
       type: 'setFilters';
       payload: Filter[];
-    };
+    }
+  | { type: 'fetchDrinks'; payload: DrinkList };
 
 export type DrinksContextState = {
   state: State;
@@ -52,6 +53,12 @@ const drinksReducer = (state: State, action: Action) => {
       return {
         ...state,
         filterList: action.payload,
+      };
+    }
+    case 'fetchDrinks': {
+      return {
+        ...state,
+        drinkList: action.payload,
       };
     }
     default: {
