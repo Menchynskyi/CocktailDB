@@ -9,6 +9,8 @@ export const ItemContainer = styled.View`
 `;
 
 export const DrinkName = styled.Text`
+  flex: 1;
+  flex-wrap: wrap;
   margin-left: 20px;
   padding: 20px 0;
   color: ${({ theme }) => theme.colors.text.secondary};

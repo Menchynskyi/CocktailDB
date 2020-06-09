@@ -10,6 +10,8 @@ export const ItemContainer = styled.View`
 `;
 
 export const FilterName = styled.Text`
+  flex: 1;
+  flex-wrap: wrap;
   padding: 20px 0;
   color: ${({ theme }) => theme.colors.text.secondary};
   font-family: ${({ theme }) => theme.fontFamily.regular};
