@@ -19,7 +19,7 @@ export type Action =
       type: 'setFilters';
       payload: Filter[];
     }
-  | { type: 'fetchDrinks'; payload: DrinkList };
+  | { type: 'getDrinks'; payload: DrinkData };
 
 export type DrinksContextState = {
   state: State;
@@ -53,12 +53,13 @@ const drinksReducer = (state: State, action: Action) => {
       return {
         ...state,
         filterList: action.payload,
+        drinkList: [],
       };
     }
-    case 'fetchDrinks': {
+    case 'getDrinks': {
       return {
         ...state,
-        drinkList: action.payload,
+        drinkList: [...state.drinkList, action.payload],
       };
     }
     default: {

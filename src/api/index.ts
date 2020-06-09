@@ -30,24 +30,26 @@ export const getDrinksByType = async (filterName: string) => {
     ) as Drink[];
     return {
       title: filterName,
-      data: drinks.slice(0, 5),
+      data: drinks.slice(0, 8),
     };
   } catch (e) {
     throw new Error(e);
   }
 };
 
-export const fetchDrinks = async (
+export const getDrinks = async (
   dispatch: React.Dispatch<Action>,
-  filterList: Filter[]
+  filterList: Filter[],
+  id: number
 ) => {
   try {
-    const data = await Promise.all(
-      filterList
-        .filter(({ isSelected }) => isSelected)
-        .map(({ name }) => getDrinksByType(name))
-    );
-    dispatch({ type: 'fetchDrinks', payload: data });
+    const selectedFilters = filterList.filter(({ isSelected }) => isSelected);
+    if (id < selectedFilters.length) {
+      const data = await getDrinksByType(
+        selectedFilters[id === 0 ? 0 : id].name
+      );
+      dispatch({ type: 'getDrinks', payload: data });
+    }
   } catch (e) {
     throw new Error(e);
   }

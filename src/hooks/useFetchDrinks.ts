@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { fetchDrinks } from 'api';
+import { getDrinks } from 'api';
 import { useDrinksDispatch, useDrinksState } from 'contexts';
 import { useFetchFilters } from './useFetchFilters';
 
@@ -10,11 +10,12 @@ export const useFetchDrinks = () => {
 
   useEffect(() => {
     if (!loading) {
-      fetchDrinks(dispatch, filterList);
+      getDrinks(dispatch, filterList, drinkList.length);
     }
   }, [filterList]);
 
   return {
+    filterList,
     drinkList,
     loading: drinkList.length === 0,
     error,
