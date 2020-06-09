@@ -6,6 +6,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { Theme } from 'theme';
 import { Drinks, Filters } from 'screens';
 import { Header } from 'components';
+import { DrinksProvider } from 'contexts';
 
 const Stack = createStackNavigator();
 
@@ -22,20 +23,22 @@ const App: React.FC = () => {
 
   return (
     <Theme>
-      <NavigationContainer>
-        <Stack.Navigator headerMode="screen">
-          <Stack.Screen
-            name="Drinks"
-            component={Drinks}
-            options={{ header: Header }}
-          />
-          <Stack.Screen
-            name="Filters"
-            component={Filters}
-            options={{ header: Header }}
-          />
-        </Stack.Navigator>
-      </NavigationContainer>
+      <DrinksProvider>
+        <NavigationContainer>
+          <Stack.Navigator headerMode="screen">
+            <Stack.Screen
+              name="Drinks"
+              component={Drinks}
+              options={{ header: Header }}
+            />
+            <Stack.Screen
+              name="Filters"
+              component={Filters}
+              options={{ header: Header }}
+            />
+          </Stack.Navigator>
+        </NavigationContainer>
+      </DrinksProvider>
     </Theme>
   );
 };

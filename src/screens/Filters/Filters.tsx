@@ -1,6 +1,6 @@
 import React from 'react';
-import { View } from 'react-native';
+import { FilterContainer } from './FilterStyled';
 
 export const Filters: React.FC = () => {
-  return <View />;
+  return <FilterContainer />;
 };

@@ -13,6 +13,8 @@ module.exports = api => {
             screens: './src/screens/',
             utils: './src/utils/',
             theme: './src/theme/',
+            types: './src/types/',
+            contexts: './src/contexts/',
           },
         },
       ],
