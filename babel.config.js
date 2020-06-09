@@ -15,6 +15,7 @@ module.exports = api => {
             theme: './src/theme/',
             types: './src/types/',
             contexts: './src/contexts/',
+            api: './src/api/',
           },
         },
       ],

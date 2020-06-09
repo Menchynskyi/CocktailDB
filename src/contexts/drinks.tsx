@@ -4,12 +4,17 @@ import { Drink, Filter } from 'types';
 type State = {
   drinkList: Drink[];
   filterList: Filter[];
+  error: boolean;
 };
 
-export type Action = {
-  type: 'fetchFilters';
-  payload: Filter[];
-};
+export type Action =
+  | {
+      type: 'fetchFilters';
+      payload: Filter[];
+    }
+  | {
+      type: 'errorFetching';
+    };
 
 export type DrinksContextState = {
   state: State;
@@ -21,6 +26,7 @@ type DrinksProviderProps = { children: React.ReactNode };
 export const initialState: State = {
   drinkList: [],
   filterList: [],
+  error: false,
 };
 
 const drinksReducer = (state: State, action: Action) => {
@@ -29,6 +35,13 @@ const drinksReducer = (state: State, action: Action) => {
       return {
         ...state,
         filterList: action.payload,
+        error: false,
+      };
+    }
+    case 'errorFetching': {
+      return {
+        ...state,
+        error: true,
       };
     }
     default: {

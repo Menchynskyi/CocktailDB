@@ -7,3 +7,7 @@ export type Filter = {
   name: string;
   isSelected: boolean;
 };
+
+export type FilterApi = {
+  [key: string]: any;
+};
