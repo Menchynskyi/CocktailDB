@@ -1,10 +1,11 @@
 import React from 'react';
-import { Text } from 'react-native';
+import { Text, SafeAreaView } from 'react-native';
 import { useFonts } from '@use-expo/font';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { Theme } from 'theme';
 import { Drinks, Filters } from 'screens';
+import { Header } from 'components';
 
 const Stack = createStackNavigator();
 
@@ -22,9 +23,17 @@ const App: React.FC = () => {
   return (
     <Theme>
       <NavigationContainer>
-        <Stack.Navigator>
-          <Stack.Screen name="Drinks" component={Drinks} />
-          <Stack.Screen name="Filters" component={Filters} />
+        <Stack.Navigator headerMode="screen">
+          <Stack.Screen
+            name="Drinks"
+            component={Drinks}
+            options={{ header: Header }}
+          />
+          <Stack.Screen
+            name="Filters"
+            component={Filters}
+            options={{ header: Header }}
+          />
         </Stack.Navigator>
       </NavigationContainer>
     </Theme>
